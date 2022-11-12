@@ -3,8 +3,8 @@ import init from '../controllers/init.controller'
 
 const router = Router()
 
-router.use("/init",init.information)
-router.get('/')
+router.get("/init",init.information)
+router.get('/error',init.information2)
 
 export default router
 

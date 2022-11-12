@@ -1,16 +1,26 @@
 import {Response} from 'express'
 import { StatusError } from '../errors/StatusError'
+
 enum Status{
     OK=200,
     NotFound=404,
     ServerError=500,
     Create=201,
 }
-
+interface Response_Interface{
+    code:Number,
+    success:Boolean,
+    data?:Object,
+}
 
 const Response_Format = {
     OK(res:Response,data:any){
-        return res.status(Status.OK).json(data)
+        const json:Response_Interface={
+            code:Status.OK,
+            success:true,
+            data:data
+        }
+        return res.status(Status.OK).json(json)
     },
     serverError(res:Response,data:any){
         throw new StatusError("Server Error",Status.ServerError)
@@ -33,5 +43,6 @@ const Response_Format = {
 
 export {
     Status,
-    Response_Format
+    Response_Format,
+    Response_Interface
 }
