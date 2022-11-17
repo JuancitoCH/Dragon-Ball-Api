@@ -3,18 +3,24 @@
 # Usage
 - Create and complete the .env with the content of .env.example
 - Run the Following command:
-  
+>  
 > Install all dependencies
-> - npm i
-> 
+> ```
+>  npm i
+> ```
 > Start The Api
-> - npm run Start
-> 
+> ```
+> npm run Start
+> ```
 > Run in Dev Mode
-> - npm run dev
-> 
+> ```
+> npm run dev
+> ```
 > Run All Tests
-> - npm run test
+> ```
+> npm run test
+> ```
+>  
 
 # Tools
 - Typescript
