@@ -1,16 +1,13 @@
 import {Request,Response,Router, NextFunction} from 'express'
 import { Response_Format } from '../helpers/response.forms'
 import Character from  '../interfaces/character.interface'
+import CharacterService from '../services/character'
+const characterService = new CharacterService()
 
 const Characters_Controller={
     async getAll(req:Request,res:Response,next:NextFunction){
         try{
-            const object:Character={
-                name:"kokun",
-                images:["a"],
-                race:"Saiyayin",
-                birth:"21/03/1985"
-            }
+            const object: Character[] = await characterService.getMany()
             Response_Format.OK(res,object)
         }catch(e){ next(e) }
     },
