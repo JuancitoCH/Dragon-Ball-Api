@@ -10,7 +10,7 @@
 > ```
 > Start The Api
 > ```
-> npm run Start
+> npm run start
 > ```
 > Run in Dev Mode
 > ```
