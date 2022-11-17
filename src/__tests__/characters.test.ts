@@ -1,7 +1,9 @@
 import request from 'supertest'
 import app from '../app';
+import Prisma from '../config/db';
 
 beforeAll(async()=>{
+  Prisma.$connect()
 })
 
 describe('Characters Endpoints', function () {
@@ -20,4 +22,5 @@ describe('Characters Endpoints', function () {
 })
 
 afterAll(async()=>{
+  Prisma.$disconnect()
 })
