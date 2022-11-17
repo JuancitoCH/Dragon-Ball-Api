@@ -6,9 +6,9 @@ interface Character{
     heigth?:Number,
     images:Array<String>,
     // raza, buscar english
-    raze:String,
+    race:String,
     // nacimiento, buscar english
-    nacimiento:String,
+    birth:String,
     transformations?:Array<String>
 }
 

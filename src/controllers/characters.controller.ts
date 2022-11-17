@@ -3,18 +3,16 @@ import { Response_Format } from '../helpers/response.forms'
 import Character from  '../interfaces/character.interface'
 
 const Characters_Controller={
-    getAll(req:Request,res:Response,next:NextFunction){
+    async getAll(req:Request,res:Response,next:NextFunction){
         try{
             const object:Character={
                 name:"kokun",
                 images:["a"],
-                raze:"Saiyayin",
-                nacimiento:"21/03/1985"
+                race:"Saiyayin",
+                birth:"21/03/1985"
             }
             Response_Format.OK(res,object)
-        }catch(e){
-            next(e)
-        }
+        }catch(e){ next(e) }
     },
 }
 
