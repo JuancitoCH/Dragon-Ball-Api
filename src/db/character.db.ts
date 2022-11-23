@@ -2,7 +2,7 @@ import { Prisma } from "@prisma/client";
 import PrismaCL from "../config/db";
 import CharacterInterface from '../interfaces/character.interface'
 
-
+// Abstraction layer of the ORM
 const Character_db = {
     async getMany(filter:Prisma.CharacterWhereInput ={}){
         const response = await PrismaCL.character.findMany({
