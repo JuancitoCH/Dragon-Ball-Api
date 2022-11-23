@@ -12,9 +12,12 @@ Prisma.$connect().then(()=>{
 }).catch((e:Error)=>{
     console.log("- 🛑 [Server] Error")
     console.error(e)
+    process.exit(1)
+
 })
 
 process.on('uncaughtException',async()=>{
     // Disconnect Prisma CLient
     await Prisma.$disconnect()
 })
+

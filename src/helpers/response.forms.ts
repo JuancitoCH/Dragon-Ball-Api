@@ -6,6 +6,7 @@ enum Status{
     NotFound=404,
     ServerError=500,
     Create=201,
+    UserError=400
 }
 interface Response_Interface{
     code:Number,
@@ -26,7 +27,12 @@ const Response_Format = {
         throw new StatusError("Server Error",Status.ServerError)
     },
     Create(res:Response,data:any){
-        return res.status(Status.Create).json(data)
+        const json:Response_Interface={
+            code:Status.Create,
+            success:true,
+            data:data
+        }
+        return res.status(Status.Create).json(json)
     },
     NotFound(res:Response){
         return res.status(Status.NotFound).json({
@@ -38,7 +44,7 @@ const Response_Format = {
         return res.status(Status.OK).send(
             `<h1>Hola</h1>`
         )
-    }
+    },
 }
 
 export {

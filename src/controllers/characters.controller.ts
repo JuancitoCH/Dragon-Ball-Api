@@ -11,6 +11,12 @@ const Characters_Controller={
             Response_Format.OK(res,object)
         }catch(e){ next(e) }
     },
+    async createCharacter(req:Request,res:Response,next:NextFunction){
+        try{
+            const object: Character = await characterService.create(req.body)
+            Response_Format.Create(res,object)
+        }catch(e){ next(e) }
+    },
 }
 
 export default Characters_Controller

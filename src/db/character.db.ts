@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 import PrismaCL from "../config/db";
-import Character from "../interfaces/character.interface";
+import CharacterInterface from '../interfaces/character.interface'
 
 
 const Character_db = {
@@ -10,7 +10,15 @@ const Character_db = {
                 ...filter
             }
         })
-        return response as Array<Character>
+        return response as Array<CharacterInterface>
+    },
+    async create(character:CharacterInterface){
+        const response = await PrismaCL.character.create({
+            data:{
+               ...character as Prisma.CharacterCreateInput
+            }
+        })
+        return response as CharacterInterface
     },
 }
 
