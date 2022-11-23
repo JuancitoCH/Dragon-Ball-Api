@@ -6,5 +6,5 @@
 > - Add: Validators for fields
 > - Add: Env Variable for test database URI when run test
 ## Doing
-> - Add: Create Character
 ## Complete
+> - Add: Create Character
