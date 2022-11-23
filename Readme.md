@@ -1,5 +1,5 @@
 # Dragon Ball Api
-
+This Project has as objective to implement and use the Test Driven Development, patterns of Architecture and good practice.
 # Usage
 - Create and complete the .env with the content of .env.example
 - Run the Following command:
