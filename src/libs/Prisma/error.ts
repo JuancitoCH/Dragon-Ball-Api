@@ -1,6 +1,14 @@
-import { StatusError } from "../../errors/StatusError";
-// Not in Use
+import { Prisma } from "@prisma/client";
+import { match } from "assert";
+
 export default function PrismaErrorManage(error:any){
-    console.log(error)
-    throw new StatusError("Server Error",500)
+    // Se pasa el Pointer del Objeto y Podemos Modificarlo
+    if(error instanceof Prisma.PrismaClientInitializationError){
+        // console.log("aaa")
+    }
+    if(error instanceof Prisma.PrismaClientUnknownRequestError){
+        // match(error.message,/Authentication failed/)
+        console.log(error)
+        error.message="Internal server error"
+    }
 }
