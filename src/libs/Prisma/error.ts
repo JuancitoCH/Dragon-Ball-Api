@@ -8,7 +8,12 @@ export default function PrismaErrorManage(error:any){
     }
     if(error instanceof Prisma.PrismaClientUnknownRequestError){
         // match(error.message,/Authentication failed/)
-        console.log(error)
+        // console.log(error)
         error.message="Internal server error"
     }
+    if(error instanceof Prisma.PrismaClientValidationError){
+        // match(error.message,/Authentication failed/)
+        error.message="Internal server error : Validation Error"
+    }
+    // console.error(error)
 }
