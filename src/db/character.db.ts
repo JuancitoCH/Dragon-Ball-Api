@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 import PrismaCL from "../config/db";
-import CharacterInterface from '../interfaces/character.interface'
+import CharacterInterface,{CharacterOptional} from '../interfaces/character.interface'
 
 // Abstraction layer of the ORM
 const Character_db = {
@@ -11,6 +11,14 @@ const Character_db = {
             }
         })
         return response as Array<CharacterInterface>
+    },
+    async getOne(filter:CharacterOptional){
+        const response = await PrismaCL.character.findFirst({
+            where:{
+                ...filter as Prisma.CharacterWhereInput
+            }
+        })
+        return response as CharacterInterface
     },
     async create(character:CharacterInterface){
         const response = await PrismaCL.character.create({

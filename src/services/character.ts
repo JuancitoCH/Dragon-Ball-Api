@@ -1,6 +1,6 @@
 import Character_db from "../db/character.db";
 import Error_throws from "../helpers/error.throws";
-import CharacterInterface from '../interfaces/character.interface'
+import CharacterInterface,{CharacterOptional} from '../interfaces/character.interface'
 
 class CharacterService{
     async getMany(){
@@ -9,7 +9,14 @@ class CharacterService{
     async create(character:CharacterInterface){
         this.validator_fields(character)
         this.validator_types(character)
+        const chaAlready = await this.getOne({name: character.name } as CharacterOptional)
+        if(chaAlready){
+         Error_throws.validation("Invalid Character: Character Already Exist")
+        }
         return await Character_db.create(character)
+    }
+    async getOne(characterFilter:CharacterOptional){
+        return await Character_db.getOne(characterFilter)
     }
     
     validator_fields(character:CharacterInterface){
