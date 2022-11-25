@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc && node dist/src/index.js",
-    "dev": "ts-node-dev src/index.ts",
-    "test": "tsc && jest",
-    "test_": "tsc && jest --detectOpenHandles"
+    "dev": "npx dotenv -e .env.development -- ts-node-dev src/index.ts",
+    "test": "tsc && npx dotenv -e .env.test jest",
+    "test_": "tsc && npx dotenv -e .env.test jest --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +26,7 @@
   "dependencies": {
     "@prisma/client": "^4.6.1",
     "dotenv": "^16.0.3",
+    "dotenv-cli": "^6.0.0",
     "express": "^4.18.2"
   },
   "prisma": {

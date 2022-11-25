@@ -6,6 +6,12 @@ class CharacterService{
     async getMany(){
         return await Character_db.getMany()
     }
+    async getOne(characterFilter:CharacterOptional){
+        return await Character_db.getOne(characterFilter)
+    }
+    async delete(idCharacter:string){
+        return await Character_db.delete(idCharacter)
+    }
     async create(character:CharacterInterface){
         this.validator_fields(character)
         this.validator_types(character)
@@ -14,9 +20,6 @@ class CharacterService{
          Error_throws.validation("Invalid Character: Character Already Exist")
         }
         return await Character_db.create(character)
-    }
-    async getOne(characterFilter:CharacterOptional){
-        return await Character_db.getOne(characterFilter)
     }
     
     validator_fields(character:CharacterInterface){

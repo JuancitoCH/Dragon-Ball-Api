@@ -28,6 +28,14 @@ const Character_db = {
         })
         return response as CharacterInterface
     },
+    async delete(id:string){
+        const response = await PrismaCL.character.delete({
+            where:{
+                id
+            }
+        })
+        return response as CharacterInterface
+    },
 }
 
 export default Character_db

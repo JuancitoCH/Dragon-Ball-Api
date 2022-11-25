@@ -10,7 +10,7 @@ beforeAll(async () => {
 })
 
 describe('Characters Endpoints', function () {
-
+  let characters:Array<CharacterInterface> = []
 
   it('It should create a character', async () => {
     const character: CharacterInterface = {
@@ -39,16 +39,17 @@ describe('Characters Endpoints', function () {
   it('It should get all characters', async () => {
     const response = await request(app).get('/character/')
     expect(response.status).toBe(200)
-    expect(response.body.data[response.body.data.length-1]).toEqual(
-        expect.objectContaining({
-          name: "Goku",
-          lastname: "Son",
-        })
-      )
-      // expect.arrayContaining([
+    expect(response.body.data[response.body.data.length - 1]).toEqual(
+      expect.objectContaining({
+        name: "Goku",
+        lastname: "Son",
+      })
+    )
+    characters = response.body.data
+    // expect.arrayContaining([
   });
   it('It should get error at create a character', async () => {
-    const character:any = {
+    const character: any = {
     }
     const response = await request(app).post('/character/')
       .send(character)
@@ -67,8 +68,8 @@ describe('Characters Endpoints', function () {
         birth: 2,
         race: 2,
         images: "a",
-        heigth:"hola",
-        transformations:[2]
+        heigth: "hola",
+        transformations: [2]
       })
     expect(response2.status).toBe(400)
     expect(response2.body).toEqual(
@@ -79,7 +80,36 @@ describe('Characters Endpoints', function () {
         },
       }))
 
+    const response3 = await request(app).post('/character/')
+      .send({
+        name: "Goku",
+        lastname: "Son",
+        birth: "23023023",
+        race: "Saiyan",
+        images: [],
+        heigth: 180,
+      })
+    expect(response3.status).toBe(400)
+    expect(response3.body).toEqual(
+      expect.objectContaining({
+        success: false,
+        error: {
+          message: expect.stringContaining("Invalid"),
+        },
+      }))
   });
+
+  it("It Should delete one Character",async ()=>{
+    const response = await request(app).delete('/character/'+characters[characters.length-1].id)
+    expect(response.status).toBe(200)
+    expect(response.body.data).toEqual(
+      expect.objectContaining({
+        name: "Goku",
+        lastname: "Son",
+      })
+    )
+  })
+
 })
 
 afterAll(async () => {

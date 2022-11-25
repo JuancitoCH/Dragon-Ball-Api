@@ -2,7 +2,6 @@ import app from "./app"
 import Prisma from './config/db'
 import env from "./config/env"
 const {PORT} = env
-
 // const PORT = 4000
 
 Prisma.$connect().then(()=>{
