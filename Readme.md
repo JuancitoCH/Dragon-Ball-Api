@@ -3,10 +3,18 @@ This Project has as objective to implement and use the Test Driven Development, 
 # Usage
 - Create and complete the .env with the content of .env.example
 - Run the Following command:
+
+> Before Install Create The respective files with the content on the .env.example:
+> - .env.development
+> - .env.test
 >  
-> Install all dependencies
+> Install all Dependencies
 > ```
 >  npm i
+> ```
+> Generate Prisma Client
+> ```
+>  npx prisma generate
 > ```
 > Start The Api
 > ```
