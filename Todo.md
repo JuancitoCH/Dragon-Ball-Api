@@ -1,5 +1,6 @@
 ## Todo
 > - Add: Pagination [Documentation](https://www.prisma.io/docs/concepts/components/prisma-client/pagination)
+> - Add: Simple Auth
 ## Doing
 ## Complete
 > - Add: Create Character
