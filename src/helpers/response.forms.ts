@@ -40,9 +40,9 @@ const Response_Format = {
             message:"Route Not Found"
         })
     },
-    Html(res:Response,content:any){
+    Html(res:Response,content:string){
         return res.status(Status.OK).send(
-            `<h1>Hola</h1>`
+            `<h1>${content}</h1>`
         )
     },
 }

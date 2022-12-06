@@ -6,9 +6,14 @@ import notfound_handler from './libs/express/middleware/notfound'
 
 import init from './routes/init.routes'
 import character from './routes/character.routes'
+import cors from 'cors'
 
 const app:Express = express()
 
+app.use(cors({
+    origin:"*"
+}))
+// middleware
 app.use(express.json())
 
 app.get("/",(req:Request,res:Response)=>{

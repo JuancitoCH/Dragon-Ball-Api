@@ -4,7 +4,7 @@ import { Response_Format } from '../helpers/response.forms'
 
 const init={
     information(req:Request,res:Response){
-        Response_Format.Html(res,"asd")
+        Response_Format.Html(res,"Working")
     },
     information2(req:Request,res:Response,next:NextFunction){
         try{

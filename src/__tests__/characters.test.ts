@@ -10,7 +10,7 @@ beforeAll(async () => {
 })
 
 describe('Characters Endpoints', function () {
-  let characters:Array<CharacterInterface> = []
+  let characters: Array<CharacterInterface> = []
 
   it('It should create a character', async () => {
     const character: CharacterInterface = {
@@ -23,6 +23,7 @@ describe('Characters Endpoints', function () {
       // transformations:[]
     }
     const response = await request(app).post('/character/')
+      .set("Authorization",`Basic ${process.env.TEST_BASIC_KEY_ENCODED}`)
       .send(character)
     expect(response.status).toBe(201)
     expect(response.body.data).toEqual(
@@ -99,8 +100,9 @@ describe('Characters Endpoints', function () {
       }))
   });
 
-  it("It Should delete one Character",async ()=>{
-    const response = await request(app).delete('/character/'+characters[characters.length-1].id)
+  it("It Should delete one Character", async () => {
+    const response = await request(app).delete('/character/' + characters[characters.length - 1].id)
+      .set("Authorization",`Basic ${process.env.TEST_BASIC_KEY_ENCODED}`)
     expect(response.status).toBe(200)
     expect(response.body.data).toEqual(
       expect.objectContaining({
